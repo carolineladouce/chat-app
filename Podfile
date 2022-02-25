@@ -2,18 +2,14 @@
 # platform :ios, '9.0'
 
 target 'MessengerApp' do
-  # Comment the next line if you don't want to use dynamic frameworks
+# Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for MessengerApp
-
-  target 'MessengerAppTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'MessengerAppUITests' do
-    # Pods for testing
-  end
+pod 'Firebase/Core'
+pod 'Firebase/Auth'
+pod 'Firebase/Database'
 
 end
+
+
+
