@@ -21,7 +21,7 @@ class RegisterViewController: UIViewController {
         let imageView = UIImageView()
         //        imageView.image = UIImage(named: "logo")
         //        imageView.image = "🙂".emojiToImage()
-        imageView.image = UIImage(systemName: "person")
+        imageView.image = UIImage(systemName: "person.circle")
         imageView.tintColor = .gray
         imageView.contentMode = .scaleAspectFit
         imageView.layer.masksToBounds = true
