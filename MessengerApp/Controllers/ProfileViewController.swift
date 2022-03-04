@@ -8,22 +8,29 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
+    
+    let profileTableView = UITableView()
+    var safeArea: UILayoutGuide!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        view.backgroundColor = .white
+        safeArea = view.layoutMarginsGuide
+        
+        setupTableView()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func setupTableView() {
+        view.addSubview(profileTableView)
+        
+        profileTableView.translatesAutoresizingMaskIntoConstraints = false
+        profileTableView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
+        profileTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        profileTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        profileTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        
     }
-    */
-
+    
 }
