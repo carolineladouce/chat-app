@@ -25,6 +25,7 @@
 		C64637D927B4500C008A5C79 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64637D827B4500C008A5C79 /* ProfileViewController.swift */; };
 		C64637DC27B4B1F8008A5C79 /* ExtensionsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64637DB27B4B1F8008A5C79 /* ExtensionsUIView.swift */; };
 		C64637DE27B4B5D9008A5C79 /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64637DD27B4B5D9008A5C79 /* ExtensionString.swift */; };
+		C6501DAF27D582770054C3C6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6501DAE27D582770054C3C6 /* TabBarController.swift */; };
 		E3DD1CBCB55EA803B63B5562 /* Pods_MessengerApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2FA7F02B5E1D14D7638D42 /* Pods_MessengerApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		C64637D827B4500C008A5C79 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C64637DB27B4B1F8008A5C79 /* ExtensionsUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsUIView.swift; sourceTree = "<group>"; };
 		C64637DD27B4B5D9008A5C79 /* ExtensionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
+		C6501DAE27D582770054C3C6 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		F2599073B85EBE8A1706B293 /* Pods-MessengerApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessengerApp.release.xcconfig"; path = "Target Support Files/Pods-MessengerApp/Pods-MessengerApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,6 +157,7 @@
 		C64637C927B448EB008A5C79 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C6501DAE27D582770054C3C6 /* TabBarController.swift */,
 				C646379D27B44805008A5C79 /* ConversationsViewController.swift */,
 				C64637DA27B45293008A5C79 /* Login */,
 				C64637D227B44FBA008A5C79 /* PhotoViewerViewController.swift */,
@@ -402,6 +405,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C64637CF27B44F8C008A5C79 /* LoginViewController.swift in Sources */,
+				C6501DAF27D582770054C3C6 /* TabBarController.swift in Sources */,
 				C64637D127B44F9D008A5C79 /* RegisterViewController.swift in Sources */,
 				C64637D727B44FF4008A5C79 /* NewConversationViewController.swift in Sources */,
 				C646379E27B44805008A5C79 /* ConversationsViewController.swift in Sources */,
