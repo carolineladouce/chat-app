@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C62DA8C527C8834C00C733D3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C62DA8C427C8834C00C733D3 /* GoogleService-Info.plist */; };
 		C62DA8C727CB375B00C733D3 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62DA8C627CB375B00C733D3 /* DatabaseManager.swift */; };
 		C646379A27B44805008A5C79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C646379927B44805008A5C79 /* AppDelegate.swift */; };
 		C646379C27B44805008A5C79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C646379B27B44805008A5C79 /* SceneDelegate.swift */; };
@@ -26,6 +25,7 @@
 		C64637DC27B4B1F8008A5C79 /* ExtensionsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64637DB27B4B1F8008A5C79 /* ExtensionsUIView.swift */; };
 		C64637DE27B4B5D9008A5C79 /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64637DD27B4B5D9008A5C79 /* ExtensionString.swift */; };
 		C6501DAF27D582770054C3C6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6501DAE27D582770054C3C6 /* TabBarController.swift */; };
+		C6501DB227D93FC10054C3C6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6501DB127D93FC10054C3C6 /* GoogleService-Info.plist */; };
 		E3DD1CBCB55EA803B63B5562 /* Pods_MessengerApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2FA7F02B5E1D14D7638D42 /* Pods_MessengerApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +49,6 @@
 /* Begin PBXFileReference section */
 		6A2FA7F02B5E1D14D7638D42 /* Pods_MessengerApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MessengerApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CA0A2D1BACF1795C022ACB3 /* Pods-MessengerApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessengerApp.debug.xcconfig"; path = "Target Support Files/Pods-MessengerApp/Pods-MessengerApp.debug.xcconfig"; sourceTree = "<group>"; };
-		C62DA8C427C8834C00C733D3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C62DA8C627CB375B00C733D3 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		C646379627B44805008A5C79 /* MessengerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessengerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C646379927B44805008A5C79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +71,7 @@
 		C64637DB27B4B1F8008A5C79 /* ExtensionsUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsUIView.swift; sourceTree = "<group>"; };
 		C64637DD27B4B5D9008A5C79 /* ExtensionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
 		C6501DAE27D582770054C3C6 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		C6501DB127D93FC10054C3C6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F2599073B85EBE8A1706B293 /* Pods-MessengerApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessengerApp.release.xcconfig"; path = "Target Support Files/Pods-MessengerApp/Pods-MessengerApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,7 +126,7 @@
 		C646379827B44805008A5C79 /* MessengerApp */ = {
 			isa = PBXGroup;
 			children = (
-				C62DA8C427C8834C00C733D3 /* GoogleService-Info.plist */,
+				C6501DB127D93FC10054C3C6 /* GoogleService-Info.plist */,
 				C64637CD27B44925008A5C79 /* Resources */,
 				C64637CC27B4491A008A5C79 /* ViewModels */,
 				C64637CB27B4490A008A5C79 /* Models */,
@@ -337,7 +337,7 @@
 			files = (
 				C64637A627B44806008A5C79 /* LaunchScreen.storyboard in Resources */,
 				C64637A327B44806008A5C79 /* Assets.xcassets in Resources */,
-				C62DA8C527C8834C00C733D3 /* GoogleService-Info.plist in Resources */,
+				C6501DB227D93FC10054C3C6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
