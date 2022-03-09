@@ -18,13 +18,11 @@ class TabBarController: UITabBarController {
         
         // Do any additional setup after loading the view.
         
-                view.backgroundColor = .systemGray
-                UITabBar.appearance().barTintColor = .systemGray
+        view.backgroundColor = .systemGray
+        UITabBar.appearance().barTintColor = .systemGray
         UITabBar.appearance().backgroundColor = UIColor.lightGray.withAlphaComponent(0.25)
         
         setupViewControllers()
-        
-        
     }
     
     
@@ -32,25 +30,21 @@ class TabBarController: UITabBarController {
         viewControllers = [
             templateNavigationController(for: conversationsViewController, title: "CONVERSATIONS"),
             templateNavigationController(for: profileViewController, title: "PROFILE")
-            
-//            conversationsViewController,
-//            profileViewController
-            
         ]
     }
     
     
     func templateNavigationController(for rootViewController: UIViewController,
                                       title: String) -> UIViewController {
-       let rViewController = rootViewController
-//        let navigationController = UINavigationController(rootViewController: rootViewController)
-//        navigationController.tabBarItem.title = title
+        let rViewController = rootViewController
+        //        let navigationController = UINavigationController(rootViewController: rootViewController)
+        //        navigationController.tabBarItem.title = title
         //        navigationController.tabBarItem.image = image
         //        navigationController.navigationBar.prefersLargeTitles = true
         //        rootViewController.navigationItem.title = title
         
         rootViewController.tabBarItem.title = title
-//        return navigationController
+        //        return navigationController
         return rViewController
     }
     

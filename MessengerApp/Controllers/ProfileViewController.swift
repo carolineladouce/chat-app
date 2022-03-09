@@ -17,8 +17,6 @@ class ProfileViewController: UIViewController {
         
         view.backgroundColor = .white
         
-//        title = "PROFILE"
-        
         safeArea = view.layoutMarginsGuide
         
         setupTableView()
