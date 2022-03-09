@@ -28,7 +28,7 @@ class TabBarController: UITabBarController {
     
     func setupViewControllers() {
         viewControllers = [
-            templateNavigationController(for: conversationsViewController, title: "CONVERSATIONS"),
+            templateNavigationController(for: conversationsViewController, title: "CHATS"),
             templateNavigationController(for: profileViewController, title: "PROFILE")
         ]
     }
@@ -36,16 +36,12 @@ class TabBarController: UITabBarController {
     
     func templateNavigationController(for rootViewController: UIViewController,
                                       title: String) -> UIViewController {
-        let rViewController = rootViewController
-        //        let navigationController = UINavigationController(rootViewController: rootViewController)
-        //        navigationController.tabBarItem.title = title
-        //        navigationController.tabBarItem.image = image
-        //        navigationController.navigationBar.prefersLargeTitles = true
-        //        rootViewController.navigationItem.title = title
+        let navigationController = UINavigationController(rootViewController: rootViewController)
+        navigationController.tabBarItem.title = title
+        navigationController.navigationBar.prefersLargeTitles = true
+        rootViewController.navigationItem.title = title
         
-        rootViewController.tabBarItem.title = title
-        //        return navigationController
-        return rViewController
+        return navigationController
     }
     
     
