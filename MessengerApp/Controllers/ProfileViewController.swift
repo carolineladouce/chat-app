@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let profileTableView = UITableView()
     var safeArea: UILayoutGuide!
     
-    var sampleData = ["Test", "TestTest", "TestTestTest"]
+    var sampleData = ["Log Out"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,12 +48,22 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = sampleData[indexPath.row]
+        cell.textLabel?.textAlignment = .center
+        cell.textLabel?.textColor = .red
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         print("Cell tapped")
+        
+        do {
+            try FirebaseAuth.Auth.auth().signOut()
+            
+            
+        } catch {
+            
+        }
     }
     
     
