@@ -77,7 +77,11 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    private let facebookLoginButton = FBLoginButton()
+    private let facebookLoginButton: FBLoginButton = {
+        let button = FBLoginButton()
+        button.permissions = ["email, public_profile"]
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -223,8 +227,20 @@ extension LoginViewController: LoginButtonDelegate {
         }
         
         let credential = FacebookAuthProvider.credential(withAccessToken: token)
-        FirebaseAuth.Auth.auth().signIn(with: credential, completion: { authResult, error in
+        FirebaseAuth.Auth.auth().signIn(with: credential, completion: { [weak self] authResult, error in
             
+            guard let strongSelf = self else {
+                return
+            }
+            
+            guard authResult != nil, error == nil else {
+                print("Facebook credential login failed, MFA may be needed")
+                
+                return
+            }
+            
+            print("Successfully logged user in")
+            strongSelf.navigationController?.dismiss(animated: true, completion: nil)
         })
     }
     
