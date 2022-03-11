@@ -236,7 +236,9 @@ extension LoginViewController: LoginButtonDelegate {
             }
 
             guard authResult != nil, error == nil else {
-                print("Facebook credential login failed, MFA may be needed")
+                if let error = error {
+                    print("Facebook credential login failed, MFA may be needed - ERROR: \(error)")
+                }
 
                 return
             }
