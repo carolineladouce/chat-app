@@ -103,6 +103,8 @@ class LoginViewController: UIViewController {
         emailField.delegate = self
         passwordField.delegate = self
         
+        facebookLoginButton.delegate = self
+        
         // Add subviews
         view.addSubview(scrollView)
         scrollView.addSubview(imageView)
@@ -206,4 +208,25 @@ extension LoginViewController: UITextFieldDelegate {
         
         return true
     }
+}
+
+extension LoginViewController: LoginButtonDelegate {
+    
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        // no operation
+    }
+    
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        guard let token = result?.token?.tokenString else {
+            print("User failed to log in with facebook")
+            return
+        }
+        
+        let credential = FacebookAuthProvider.credential(withAccessToken: token)
+        FirebaseAuth.Auth.auth().signIn(with: credential, completion: { authResult, error in
+            
+        })
+    }
+    
+    
 }
