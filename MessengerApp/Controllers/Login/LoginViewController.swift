@@ -79,9 +79,10 @@ class LoginViewController: UIViewController {
     
     private let facebookLoginButton: FBLoginButton = {
         let button = FBLoginButton()
-        button.permissions = ["email, public_profile"]
+        button.permissions = ["email", "public_profile"]
         return button
     }()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -224,6 +225,7 @@ extension LoginViewController: LoginButtonDelegate {
         guard let token = result?.token?.tokenString else {
             print("User failed to log in with facebook")
             return
+        
         }
         
         let credential = FacebookAuthProvider.credential(withAccessToken: token)
@@ -232,15 +234,16 @@ extension LoginViewController: LoginButtonDelegate {
             guard let strongSelf = self else {
                 return
             }
-            
+
             guard authResult != nil, error == nil else {
                 print("Facebook credential login failed, MFA may be needed")
-                
+
                 return
             }
-            
+
             print("Successfully logged user in")
             strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+
         })
     }
     
