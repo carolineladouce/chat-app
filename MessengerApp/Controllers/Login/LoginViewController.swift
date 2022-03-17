@@ -85,11 +85,13 @@ class LoginViewController: UIViewController {
     }()
     
     
-    private let googleSignInButton = GIDSignInButton()
+    private let googleLogInButton = GIDSignInButton()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        GIDSignIn.sharedInstance.presentingViewController = self
         
         // Do any additional setup after loading the view.
         view.backgroundColor = .white
@@ -121,7 +123,7 @@ class LoginViewController: UIViewController {
         scrollView.addSubview(passwordField)
         scrollView.addSubview(loginButton)
         scrollView.addSubview(facebookLoginButton)
-        scrollView.addSubview(googleSignInButton)
+        scrollView.addSubview(googleLogInButton)
         
     }
     
@@ -152,17 +154,16 @@ class LoginViewController: UIViewController {
                                            width: scrollView.width - 60,
                                            height: 52 )
         
-        googleSignInButton.frame = CGRect(x: 30,
-                                           y: facebookLoginButton.bottom + 10,
-                                           width: scrollView.width - 60,
-                                           height: 52 )
-        
-        
         facebookLoginButton.center = scrollView.center
         facebookLoginButton.frame.origin.y = loginButton.bottom + 20
         
-        googleSignInButton.center = scrollView.center
-        googleSignInButton.frame.origin.y = facebookLoginButton.bottom + 20
+        googleLogInButton.frame = CGRect(x: 30,
+                                           y: facebookLoginButton.bottom + 10,
+                                           width: scrollView.width - 60,
+                                           height: 52 )
+  
+        googleLogInButton.center = scrollView.center
+        googleLogInButton.frame.origin.y = facebookLoginButton.bottom + 20
     }
     
     
