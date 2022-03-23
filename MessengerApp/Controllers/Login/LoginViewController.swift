@@ -9,6 +9,7 @@ import UIKit
 import FirebaseAuth
 import FBSDKLoginKit
 import GoogleSignIn
+import Firebase
 
 class LoginViewController: UIViewController {
     
@@ -91,7 +92,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        GIDSignIn.sharedInstance.presentingViewController = self
+        //        googleLogInButton.sharedInstance.presentingViewController = self
         
         // Do any additional setup after loading the view.
         view.backgroundColor = .white
@@ -115,6 +116,7 @@ class LoginViewController: UIViewController {
         passwordField.delegate = self
         
         facebookLoginButton.delegate = self
+        googleLogInButton.addTarget(self, action: #selector(googleSignInButtonTapped), for: .touchUpInside)
         
         // Add subviews
         view.addSubview(scrollView)
@@ -158,12 +160,42 @@ class LoginViewController: UIViewController {
         facebookLoginButton.frame.origin.y = loginButton.bottom + 20
         
         googleLogInButton.frame = CGRect(x: 30,
-                                           y: facebookLoginButton.bottom + 10,
-                                           width: scrollView.width - 60,
-                                           height: 52 )
-  
+                                         y: facebookLoginButton.bottom + 10,
+                                         width: scrollView.width - 60,
+                                         height: 52 )
+        
         googleLogInButton.center = scrollView.center
         googleLogInButton.frame.origin.y = facebookLoginButton.bottom + 20
+    }
+    
+    
+    @objc private func googleSignInButtonTapped() {
+        
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        
+        // Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: clientID)
+        
+        // Start the sign in flow!
+        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [unowned self] user, error in
+            
+            if let error = error {
+                // ...
+                return
+            }
+            
+            guard
+                let authentication = user?.authentication,
+                let idToken = authentication.idToken
+            else {
+                return
+            }
+            
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                           accessToken: authentication.accessToken)
+            
+            // ...
+        }
     }
     
     
@@ -247,19 +279,19 @@ extension LoginViewController: LoginButtonDelegate {
         facebookRequest.start(completion: { _, result, error in
             guard let result = result as? [String: Any],
                   error == nil else {
-                      print("Failed to make facebook graph request")
-                      return
-                  }
+                print("Failed to make facebook graph request")
+                return
+            }
             
             //            print("\(result)")
             guard let userName = result["name"] as? String,
                   let email = result["email"] as? String else {
-                      print("Failed to get email and name from FB results")
-                      return
-                  }
+                print("Failed to get email and name from FB results")
+                return
+            }
             let nameComponents = userName.components(separatedBy: " ")
             
-            //This is validating only names that are made of "two words" and will not be reliable for 
+            //This is validating only names that are made of "two words" and will not be reliable for
             guard nameComponents.count == 2 else {
                 return
             }

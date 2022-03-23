@@ -15,7 +15,7 @@ pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit'
 
 # Google Sign In
-pod 'GoogleSignIn' '~>5.0.0'
+pod 'GoogleSignIn', '~> 6.1.0'
 
 end
 

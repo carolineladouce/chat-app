@@ -128,7 +128,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
-  - GoogleSignIn
+  - GoogleSignIn (~> 6.1.0)
 
 SPEC REPOS:
   trunk:
@@ -177,6 +177,6 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
 
-PODFILE CHECKSUM: 224cd880b6e4fde7d0e7f9d3bab52f001f749953
+PODFILE CHECKSUM: 7952ffddbac50870799cceb1aff86c7107c1be97
 
 COCOAPODS: 1.11.2
