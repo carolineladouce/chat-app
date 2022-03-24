@@ -195,6 +195,85 @@ class LoginViewController: UIViewController {
                                                            accessToken: authentication.accessToken)
             
             // ...
+            
+            // Firebase Auth
+            
+            Auth.auth().signIn(with: credential, completion: { authResult, error in
+                
+                //                if let error = error {
+                //                    print(error.localizedDescription)
+                //                    print("UNABLE to sign in user")
+                //                    return
+                //                }
+                //
+                //                print("SUCCESSFUL user sign in")
+                
+                
+                
+                
+                guard let result = authResult, error == nil else {
+                    print("Failed to log in user: \(authResult?.user)")
+                    return
+                }
+                
+                let user = result.user
+                print("Logged In User: \(user)")
+                self.navigationController?.dismiss(animated: true, completion: nil)
+                
+            })
+            
+            
+            
+            //            guard let strongSelf = self else {
+            //                return
+            //            }
+            //
+            //            guard let result = authResult, error == nil else {
+            //                print("Failed to log in user with email: \(email)")
+            //                return
+            //            }
+            //
+            //            let user = result.user
+            //            print("Logged In User: \(user)")
+            //            strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+            //        })
+            
+            
+            
+            
+            
+            
+            //            guard let email = user.profile.email,
+            //              let firstName = user.profile?.givenName,
+            //              let lastName = user.profile?.familyName else {
+            //            return
+            //        }
+            //
+            //        DatabaseManager.shared.userExists(with: email, completion: { exists in
+            //            if !exists {
+            //                // insert user into database
+            //                DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName, lastName: lastName, emailAddress: email))
+            //            }
+            //        })
+            //
+            //        guard let authentication = user.authentication else {
+            //            print("Missing auth object off of google user")
+            //            return
+            //
+            //        }
+            //        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+            //
+            //        FirebaseAuth.Auth.auth().signIn(with: credential, completion: { AuthResult, error in
+            //            guard AuthResult != nil, error == nil else {
+            //                print("Failed to log in with Google credential")
+            //                return
+            //            }
+            //
+            //            print("Successfully signed in with Google credential")
+            //        })
+            //    }
+            //
+            
         }
     }
     

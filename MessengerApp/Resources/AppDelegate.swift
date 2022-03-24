@@ -20,10 +20,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         
         FirebaseApp.configure()
+
+        ApplicationDelegate.shared.application(
+            application,
+            didFinishLaunchingWithOptions: launchOptions
+        )
+        
 //
 //        ApplicationDelegate.shared.application(
-//            application,
-//            didFinishLaunchingWithOptions: launchOptions
+//            app,
+//            open: url,
+//            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+//            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
 //        )
         
         return true
@@ -31,25 +39,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
-    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
-        return GIDSignIn.sharedInstance.handle(url)
-    }
-    
-    
-//    func application(
-//        _ app: UIApplication,
-//        open url: URL,
-//        options: [UIApplication.OpenURLOptionsKey : Any] = [:]
-//    ) -> Bool {
-//        ApplicationDelegate.shared.application(
-//            app,
-//            open: url,
-//            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-//            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
-//        )
+//    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
+//
+//                ApplicationDelegate.shared.application(
+//                    app,
+//                    open: url,
+//                    sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+//                    annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+//                )
 //
 //        return GIDSignIn.sharedInstance.handle(url)
 //    }
+    
+    
+    func application(
+        _ app: UIApplication,
+        open url: URL,
+        options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+    ) -> Bool {
+        ApplicationDelegate.shared.application(
+            app,
+            open: url,
+            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+        )
+
+        return GIDSignIn.sharedInstance.handle(url)
+    }
 //
 //
 //    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
