@@ -180,7 +180,8 @@ class LoginViewController: UIViewController {
         GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [unowned self] user, error in
             
             if let error = error {
-                // ...
+                print(error.localizedDescription)
+                print("UNABLE to sign in user")
                 return
             }
             
@@ -191,56 +192,43 @@ class LoginViewController: UIViewController {
                 return
             }
             
+            
+            guard let email = user?.profile?.email,
+                  let firstName = user?.profile?.givenName,
+                  let lastName = user?.profile?.familyName else {
+                return
+            }
+            
+            DatabaseManager.shared.userExists(with: email, completion: { exists in
+                if !exists {
+                    // insert user into database
+                    DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName, lastName: lastName, emailAddress: email))
+                }
+            })
+            
+            guard let authentication = user?.authentication else {
+                print("Missing auth object off of google user")
+                return
+                
+            }
+            
+        
             let credential = GoogleAuthProvider.credential(withIDToken: idToken,
                                                            accessToken: authentication.accessToken)
             
-            // ...
-            
             // Firebase Auth
-            
             Auth.auth().signIn(with: credential, completion: { authResult, error in
-                
-                //                if let error = error {
-                //                    print(error.localizedDescription)
-                //                    print("UNABLE to sign in user")
-                //                    return
-                //                }
-                //
-                //                print("SUCCESSFUL user sign in")
-                
-                
-                
-                
                 guard let result = authResult, error == nil else {
-                    print("Failed to log in user: \(authResult?.user)")
+                    print(error?.localizedDescription)
+                    print("FAILED to sign in user: \(String(describing: authResult?.user))")
                     return
                 }
                 
                 let user = result.user
-                print("Logged In User: \(user)")
+                print("SUCCESSFUL user sign in")
+                print("User signed in: \(user)")
                 self.navigationController?.dismiss(animated: true, completion: nil)
-                
             })
-            
-            
-            
-            //            guard let strongSelf = self else {
-            //                return
-            //            }
-            //
-            //            guard let result = authResult, error == nil else {
-            //                print("Failed to log in user with email: \(email)")
-            //                return
-            //            }
-            //
-            //            let user = result.user
-            //            print("Logged In User: \(user)")
-            //            strongSelf.navigationController?.dismiss(animated: true, completion: nil)
-            //        })
-            
-            
-            
-            
             
             
             //            guard let email = user.profile.email,
