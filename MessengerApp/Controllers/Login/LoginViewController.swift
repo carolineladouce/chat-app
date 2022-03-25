@@ -229,7 +229,6 @@ class LoginViewController: UIViewController {
             guard let authentication = user?.authentication else {
                 print("Missing auth object off of google user")
                 return
-                
             }
             
             
@@ -253,39 +252,6 @@ class LoginViewController: UIViewController {
                 
                 self.navigationController?.dismiss(animated: true, completion: nil)
             })
-            
-            
-            //            guard let email = user.profile.email,
-            //              let firstName = user.profile?.givenName,
-            //              let lastName = user.profile?.familyName else {
-            //            return
-            //        }
-            //
-            //        DatabaseManager.shared.userExists(with: email, completion: { exists in
-            //            if !exists {
-            //                // insert user into database
-            //                DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName, lastName: lastName, emailAddress: email))
-            //            }
-            //        })
-            //
-            //        guard let authentication = user.authentication else {
-            //            print("Missing auth object off of google user")
-            //            return
-            //
-            //        }
-            //        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
-            //
-            //        FirebaseAuth.Auth.auth().signIn(with: credential, completion: { AuthResult, error in
-            //            guard AuthResult != nil, error == nil else {
-            //                print("Failed to log in with Google credential")
-            //                return
-            //            }
-            //
-            //            print("Successfully signed in with Google credential")
-            //        })
-            //    }
-            //
-            
         }
     }
     
