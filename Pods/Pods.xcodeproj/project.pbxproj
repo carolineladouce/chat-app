@@ -2500,7 +2500,7 @@
 		AE6BB87B752A96F2C957F2E20C74BAB1 /* FIRDeleteAccountRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRDeleteAccountRequest.h; path = FirebaseAuth/Sources/Backend/RPC/FIRDeleteAccountRequest.h; sourceTree = "<group>"; };
 		AE9AE40A47985D15B8BA5FE930D28C9B /* GDTCCTUploader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCCTUploader.m; path = GoogleDataTransport/GDTCCTLibrary/GDTCCTUploader.m; sourceTree = "<group>"; };
 		AEE3C25BC0C8B22D9FA92665CAA653A8 /* FEventRegistration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FEventRegistration.h; path = FirebaseDatabase/Sources/Core/View/FEventRegistration.h; sourceTree = "<group>"; };
-		AEFA9727CD4C99AA20AA7C3CC3931C38 /* Pods-MessengerApp */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-MessengerApp"; path = Pods_MessengerApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEFA9727CD4C99AA20AA7C3CC3931C38 /* Pods_MessengerApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MessengerApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF2BECFC1F60228FD68A0F228E528625 /* GULSceneDelegateSwizzler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULSceneDelegateSwizzler.h; path = GoogleUtilities/AppDelegateSwizzler/Public/GoogleUtilities/GULSceneDelegateSwizzler.h; sourceTree = "<group>"; };
 		AF647C2E4AFD440A1CFB7A12ED2868A5 /* GoogleSignIn-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GoogleSignIn-dummy.m"; sourceTree = "<group>"; };
 		AFBDE22BD29C324F96E37FC75F05C5F5 /* FIROptionsInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIROptionsInternal.h; path = FirebaseCore/Sources/Private/FIROptionsInternal.h; sourceTree = "<group>"; };
@@ -3775,7 +3775,7 @@
 				C1998E0D8085221AD87F89B614C10E52 /* GTMSessionFetcher.framework */,
 				0A9F46A999C47653013D3AD854352507 /* leveldb.framework */,
 				06FC5C9CF96D60C50FCD47D339C91951 /* nanopb.framework */,
-				AEFA9727CD4C99AA20AA7C3CC3931C38 /* Pods-MessengerApp */,
+				AEFA9727CD4C99AA20AA7C3CC3931C38 /* Pods_MessengerApp.framework */,
 				3347A1AB6546F0A3977529B8F199DC41 /* FBLPromises.framework */,
 			);
 			name = Products;
@@ -5604,7 +5604,7 @@
 			);
 			name = "Pods-MessengerApp";
 			productName = Pods_MessengerApp;
-			productReference = AEFA9727CD4C99AA20AA7C3CC3931C38 /* Pods-MessengerApp */;
+			productReference = AEFA9727CD4C99AA20AA7C3CC3931C38 /* Pods_MessengerApp.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		620E05868772C10B4920DC7E324F2C87 /* FirebaseCoreDiagnostics */ = {
