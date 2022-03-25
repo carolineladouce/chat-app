@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import FirebaseAuth
+//import FirebaseAuth
 import FBSDKLoginKit
 import GoogleSignIn
 import Firebase
@@ -88,9 +88,22 @@ class LoginViewController: UIViewController {
     
     private let googleLogInButton = GIDSignInButton()
     
+    // Boilerplate code for broadcasting log in notification across app delegate and view controllers
+    //    private var loginObserver: NSObjectProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Boilerplate code for broadcasting log in notification across app delegate and view controllers
+        //        loginObserver = NotificationCenter.default.addObserver(forName: .didLogInNotification, object: nil, queue: .main, using: { [weak self] _ in
+        //
+        //            guard let strongSelf = self else {
+        //                return
+        //            }
+        //
+        //            strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+        //        })
+        
         
         //        googleLogInButton.sharedInstance.presentingViewController = self
         
@@ -128,6 +141,13 @@ class LoginViewController: UIViewController {
         scrollView.addSubview(googleLogInButton)
         
     }
+    
+    // Boilerplate code for broadcasting log in notification across app delegate and view controllers
+    //    deinit {
+    //        if let observer = loginObserver {
+    //            NotificationCenter.default.removeObserver(loginObserver)
+    //        }
+    //    }
     
     
     override func viewDidLayoutSubviews() {
@@ -212,7 +232,7 @@ class LoginViewController: UIViewController {
                 
             }
             
-        
+            
             let credential = GoogleAuthProvider.credential(withIDToken: idToken,
                                                            accessToken: authentication.accessToken)
             
@@ -227,6 +247,10 @@ class LoginViewController: UIViewController {
                 let user = result.user
                 print("SUCCESSFUL user sign in")
                 print("User signed in: \(user)")
+                
+                // Boilerplate code for broadcasting log in notification across app delegate and view controllers
+                // NotificationCenter.default.post(name: .didLogInNotification, object: nil)
+                
                 self.navigationController?.dismiss(animated: true, completion: nil)
             })
             

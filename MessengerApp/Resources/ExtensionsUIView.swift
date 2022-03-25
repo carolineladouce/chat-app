@@ -36,3 +36,8 @@ extension UIView {
     
     
 }
+
+// Boilerplate code for broadcasting log in notification across app delegate and view controllers
+//extension Notification.Name {
+//    static let didLogInNotification = Notification.Name("didLogInNotification")
+//}
