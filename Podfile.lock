@@ -143,6 +143,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - GoogleSignIn (~> 6.1.0)
+  - InputBarAccessoryView
   - JGProgressHUD
   - MessageKit
   - RealmSwift
@@ -207,6 +208,6 @@ SPEC CHECKSUMS:
   RealmSwift: 10ed6fa09c36aaaff55e12afdc71802ec3ddb1c0
   SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
 
-PODFILE CHECKSUM: 09268e014f6b8dc9fe9248825fe543802f321594
+PODFILE CHECKSUM: 36d44b26f6d25e699b81e3d93da2c096e4c7b020
 
 COCOAPODS: 1.11.2

@@ -21,6 +21,7 @@ pod 'MessageKit'
 pod 'JGProgressHUD'
 pod 'RealmSwift'
 pod 'SDWebImage'
+pod 'InputBarAccessoryView'
 
 end
 
