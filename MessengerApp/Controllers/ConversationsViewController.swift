@@ -10,11 +10,39 @@ import FirebaseAuth
 
 class ConversationsViewController: UIViewController {
     
+    private let tableView: UITableView = {
+        let table = UITableView()
+        // Setting tableView to hidden by default
+        // We want the app to fetch the conversations, but if there are no conversations we don't want to display an empty tableView
+        table.isHidden = true
+        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        return table
+    }()
+    
+    private let noConversationsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "No Conversations"
+        label.textAlignment = .center
+        label.textColor = .gray
+        label.font = .systemFont(ofSize: 21, weight: .medium)
+        // Setting the label as hidden by default because
+        // We don't want this to be displayed while the conversations are loading
+        label.isHidden = true
+        return label
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         view.backgroundColor = .white
+        
+        view.addSubview(tableView)
+        view.addSubview(noConversationsLabel)
+        setupTableView()
+        fetchConversations()
         
     }
     
@@ -36,5 +64,33 @@ class ConversationsViewController: UIViewController {
         
     }
     
+    
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    
+    private func fetchConversations() {
+        // Will be setting up this function in later tutorial video
+    }
 }
+
+
+extension ConversationsViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = "Hello World"
+        
+        return cell 
+    }
+    
+}
+
 
