@@ -161,12 +161,12 @@
 			children = (
 				C6501DAE27D582770054C3C6 /* TabBarController.swift */,
 				C646379D27B44805008A5C79 /* ConversationsViewController.swift */,
+				C6B6CE2927EE96700018AD4B /* ChatViewController.swift */,
 				C64637DA27B45293008A5C79 /* Login */,
 				C64637D227B44FBA008A5C79 /* PhotoViewerViewController.swift */,
 				C64637D427B44FCA008A5C79 /* VideoPlayerViewController.swift */,
 				C64637D627B44FF4008A5C79 /* NewConversationViewController.swift */,
 				C64637D827B4500C008A5C79 /* ProfileViewController.swift */,
-				C6B6CE2927EE96700018AD4B /* ChatViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
