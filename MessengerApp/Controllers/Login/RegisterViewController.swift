@@ -220,9 +220,9 @@ class RegisterViewController: UIViewController {
               !password.isEmpty,
               
                 password.count >= 6 else {
-                    alertUserLoginError()
-                    return
-                }
+            alertUserLoginError()
+            return
+        }
         
         
         spinner.show(in: view)

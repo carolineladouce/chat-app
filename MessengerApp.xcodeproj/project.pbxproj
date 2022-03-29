@@ -27,6 +27,7 @@
 		C6501DAF27D582770054C3C6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6501DAE27D582770054C3C6 /* TabBarController.swift */; };
 		C6501DB227D93FC10054C3C6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6501DB127D93FC10054C3C6 /* GoogleService-Info.plist */; };
 		C6B6CE2A27EE96700018AD4B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B6CE2927EE96700018AD4B /* ChatViewController.swift */; };
+		C6B6CE2C27F2B3AB0018AD4B /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B6CE2B27F2B3AB0018AD4B /* StorageManager.swift */; };
 		E3DD1CBCB55EA803B63B5562 /* Pods_MessengerApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2FA7F02B5E1D14D7638D42 /* Pods_MessengerApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		C6501DAE27D582770054C3C6 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		C6501DB127D93FC10054C3C6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C6B6CE2927EE96700018AD4B /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		C6B6CE2B27F2B3AB0018AD4B /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		F2599073B85EBE8A1706B293 /* Pods-MessengerApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessengerApp.release.xcconfig"; path = "Target Support Files/Pods-MessengerApp/Pods-MessengerApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,6 +199,7 @@
 		C64637CD27B44925008A5C79 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C6B6CE2B27F2B3AB0018AD4B /* StorageManager.swift */,
 				C646379927B44805008A5C79 /* AppDelegate.swift */,
 				C646379B27B44805008A5C79 /* SceneDelegate.swift */,
 				C64637DB27B4B1F8008A5C79 /* ExtensionsUIView.swift */,
@@ -419,6 +422,7 @@
 				C62DA8C727CB375B00C733D3 /* DatabaseManager.swift in Sources */,
 				C6B6CE2A27EE96700018AD4B /* ChatViewController.swift in Sources */,
 				C64637D927B4500C008A5C79 /* ProfileViewController.swift in Sources */,
+				C6B6CE2C27F2B3AB0018AD4B /* StorageManager.swift in Sources */,
 				C646379C27B44805008A5C79 /* SceneDelegate.swift in Sources */,
 				C64637D327B44FBA008A5C79 /* PhotoViewerViewController.swift in Sources */,
 			);
