@@ -216,12 +216,14 @@ class LoginViewController: UIViewController {
                 return
             }
             
-            
             guard let email = user?.profile?.email,
                   let firstName = user?.profile?.givenName,
                   let lastName = user?.profile?.familyName else {
                 return
             }
+            
+            // Save the user email
+            UserDefaults.standard.set(email, forKey: "email")
             
             DatabaseManager.shared.userExists(with: email, completion: { exists in
                 if !exists {
@@ -319,6 +321,9 @@ class LoginViewController: UIViewController {
             }
             
             let user = result.user
+            
+            // Save the user email
+            UserDefaults.standard.set(email, forKey: "email")
             print("Logged In User: \(user)")
             strongSelf.navigationController?.dismiss(animated: true, completion: nil)
         })
@@ -398,6 +403,8 @@ extension LoginViewController: LoginButtonDelegate {
                 return
             }
             
+            // Save user email
+            UserDefaults.standard.set(email, forKey: "email")
             
             DatabaseManager.shared.userExists(with: email, completion: { exists in
                 if !exists {
