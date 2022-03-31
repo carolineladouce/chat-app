@@ -262,6 +262,9 @@ class RegisterViewController: UIViewController {
                                 let data = image.pngData() else {
                             return
                         }
+                        
+                        
+                        
                         let fileName = chatUser.profilePictureFileName
                         StorageManager.shared.uploadProfilePicture(with: data, fileName: fileName, completion: { result in
                             switch result {
