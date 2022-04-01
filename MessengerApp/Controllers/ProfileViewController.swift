@@ -38,9 +38,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         let path = "images/" + fileName
         
         let headerView = UIView(frame: CGRect(x: 0,
-                                        y: 0,
-                                        width: self.view.width,
-                                        height: 300))
+                                              y: 0,
+                                              width: self.view.width,
+                                              height: 300))
         
         headerView.backgroundColor = .link
         
@@ -50,12 +50,38 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                                                   height: 150))
         
         imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = .white
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.borderWidth = 3
         imageView.layer.masksToBounds = true
+        // Set profile imageView frame to be a circle 
+        imageView.layer.cornerRadius = imageView.width / 2
         headerView.addSubview(imageView)
         
+        StorageManager.shared.downloadURL(for: path, completion: { [weak self] result in
+            switch result {
+            case .success(let url):
+                self?.downloadImage(imageView: imageView, url: url)
+            case .failure(let error):
+                print("FAILED to get download url: \(error)")
+            }
+        })
+        
         return headerView
+    }
+    
+    
+    func downloadImage(imageView: UIImageView, url: URL) {
+        URLSession.shared.dataTask(with: url, completionHandler: { data, _, error in
+            guard let data = data, error == nil else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                let image = UIImage(data: data)
+                imageView.image = image
+            }
+        }).resume()
     }
     
     
