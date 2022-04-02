@@ -47,6 +47,7 @@ extension DatabaseManager {
     }
     
     
+    
     /// Inserts new user to database
     public func insertUser(with user: ChatAppUser, completion: @escaping (Bool) -> Void) {
         // When we insert a new user, we make the root entry:
@@ -59,7 +60,7 @@ extension DatabaseManager {
                 completion(false)
                 return
             }
-            
+
             /*
              
              We want to create a users array.
@@ -138,9 +139,27 @@ extension DatabaseManager {
                 }
             })
             
-            completion(true)
+//            completion(true)
         })
     }
+    
+    
+    public func getAllUsers(completion: @escaping (Result<[[String: String]], Error>) -> Void) {
+            self.database.child("users").observeSingleEvent(of: .value, with: { snapshot in
+                guard let value = snapshot.value as? [[String: String]] else {
+                    completion(.failure(DatabaseError.failedToFetch))
+                    return
+                }
+
+                completion(.success(value))
+            })
+        }
+        
+        enum DatabaseError: Error {
+            case failedToFetch
+        }
+    
+    
 }
 
 
