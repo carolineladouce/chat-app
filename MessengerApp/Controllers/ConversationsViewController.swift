@@ -69,17 +69,24 @@ class ConversationsViewController: UIViewController {
     @objc private func didTapComposeButton() {
         let vc = NewConversationViewController()
         vc.completion = { [weak self] result in
-            print("RESULT: \(result)")
             self?.createNewConversation(result: result)
         }
         let navVC = UINavigationController(rootViewController: vc)
         present(navVC, animated: true)
     }
     
-    // Pushes a new chatViewController onto the stack 
+    // Pushes a new chatViewController onto the stack
     private func createNewConversation(result: [String: String]) {
-        let vc = ChatViewController()
-        vc.title = "Firstname Lastname"
+        // Retrieve user email & name so that the name can be displayed in the ChatViewController 
+        guard let name = result["name"],
+                let email = result["email"] else {
+            return
+        }
+        
+        let vc = ChatViewController(with: email)
+        // Push the new ChatViewController onto the stack, ensuring it's state is isNewConversation
+        vc.isNewConversation = true
+        vc.title = name 
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
         
@@ -129,7 +136,7 @@ extension ConversationsViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let vc = ChatViewController()
+        let vc = ChatViewController(with: "sampletestemail@gmail.com")
         vc.title = "Chat Conversation Sample 1"
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
