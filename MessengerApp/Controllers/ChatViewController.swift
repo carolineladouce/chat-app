@@ -10,7 +10,7 @@ import MessageKit
 import InputBarAccessoryView
 
 struct Message: MessageType {
-
+    
     var sender: SenderType
     
     var messageId: String
@@ -31,15 +31,29 @@ struct Sender: SenderType {
 
 class ChatViewController: MessagesViewController {
     
+    public static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .long
+        formatter.locale = .current
+        return formatter
+    }()
+    
     public var isNewConversation = false
     
     public let otherUserEmail: String
     
     private var messages = [Message]()
     
-    private let selfSender = Sender(photoURL: "",
-                                    senderId: "1",
-                                    displayName: "Sample Name")
+    private var selfSender: Sender? {
+        guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
+            return nil
+        }
+        
+        return Sender(photoURL: "",
+                      senderId: email,
+                      displayName: "Sample Name")
+    }
     
     init(with email: String) {
         self.otherUserEmail = email
@@ -54,15 +68,16 @@ class ChatViewController: MessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        messages.append(Message(sender: selfSender,
-                                messageId: "1",
-                                sentDate: Date(),
-                                kind: .text("Hello World message")))
-        
-        messages.append(Message(sender: selfSender,
-                                messageId: "1",
-                                sentDate: Date(),
-                                kind: .text("Hello World message. Hello World message. Hello World message.")))
+        // Sample Message bubbles:
+        //        messages.append(Message(sender: selfSender,
+        //                                messageId: "1",
+        //                                sentDate: Date(),
+        //                                kind: .text("Hello World message")))
+        //
+        //        messages.append(Message(sender: selfSender,
+        //                                messageId: "1",
+        //                                sentDate: Date(),
+        //                                kind: .text("Hello World message. Hello World message. Hello World message.")))
         
         view.backgroundColor = .purple
         
@@ -70,9 +85,14 @@ class ChatViewController: MessagesViewController {
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         messageInputBar.delegate = self
-        
     }
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        messageInputBar.inputTextView.becomeFirstResponder()
+    }
     
 }
 
@@ -80,23 +100,58 @@ class ChatViewController: MessagesViewController {
 extension ChatViewController: InputBarAccessoryViewDelegate {
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         // Users can not send an empty message / a message containing only spaces
-        guard !text.replacingOccurrences(of: "", with: "").isEmpty else {
+        guard !text.replacingOccurrences(of: "", with: "").isEmpty,
+              let selfSender = self.selfSender,
+              let messageId = createMessageId() else {
             return
         }
         
+        print("SENDING CHAT MESSAGE: \(text)")
+        
         // Otherwise, send message
         if isNewConversation {
+            let message = Message(sender: selfSender,
+                                  messageId: messageId,
+                                  sentDate: Date(),
+                                  kind: .text(text))
+            
             // Create conversation in database
+            DatabaseManager.shared.createNewConversation(with: otherUserEmail, firstMessage: message, completion: { success in
+                if success {
+                    print("Message sent")
+                } else {
+                    print("Failed to send")
+                }
+            })
         } else {
             // Append to existing conversation data
         }
+    }
+    
+    private func createMessageId() -> String? {
+        // date, otherUserEmail, senderEmail, randomInt
+        guard let currentUserEmail = UserDefaults.standard.value(forKey: "email") else {
+            return nil
+        }
+        
+        let dateString = Self.dateFormatter.string(from: Date())
+        let newIdentifier = "\(otherUserEmail)_\(currentUserEmail)_\(dateString)"
+        
+        print("Created message id: \(newIdentifier)")
+        return newIdentifier
     }
 }
 
 
 extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate {
     func currentSender() -> SenderType {
-        return selfSender
+        if let sender = selfSender{
+            return sender
+        }
+        
+        fatalError("Self sender is nil, email should be cached")
+        // Since function requires returning a "Sender", create a "Dummy Sender" to pass
+        return Sender(photoURL: "", senderId: "123", displayName: "")
     }
     
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
