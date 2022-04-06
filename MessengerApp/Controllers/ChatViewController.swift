@@ -10,23 +10,45 @@ import MessageKit
 import InputBarAccessoryView
 
 struct Message: MessageType {
-    
-    var sender: SenderType
-    
-    var messageId: String
-    
-    var sentDate: Date
-    
-    var kind: MessageKind
+    public var sender: SenderType
+    public var messageId: String
+    public var sentDate: Date
+    public var kind: MessageKind
+}
+
+extension MessageKind {
+    var messsageKindString: String {
+        switch self {
+            
+        case .text(_):
+            return "text"
+        case .attributedText(_):
+            return "attributed_text"
+        case .photo(_):
+            return "photo"
+        case .video(_):
+            return "video"
+        case .location(_):
+            return "location"
+        case .emoji(_):
+            return "emoji"
+        case .audio(_):
+            return "audio"
+        case .contact(_):
+            return "contact"
+        case .custom(_):
+            return "custom"
+        case .linkPreview(_):
+            return "link_preview"
+        }
+    }
 }
 
 
 struct Sender: SenderType {
-    var photoURL: String
-    
-    var senderId: String
-    
-    var displayName: String
+    public var photoURL: String
+    public var senderId: String
+    public var displayName: String
 }
 
 class ChatViewController: MessagesViewController {
@@ -130,12 +152,14 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
     
     private func createMessageId() -> String? {
         // date, otherUserEmail, senderEmail, randomInt
-        guard let currentUserEmail = UserDefaults.standard.value(forKey: "email") else {
+        guard let currentUserEmail = UserDefaults.standard.value(forKey: "email") as? String else {
             return nil
         }
         
+        let safeCurrentEmail = DatabaseManager.safeEmail(emailAddress: currentUserEmail)
+        
         let dateString = Self.dateFormatter.string(from: Date())
-        let newIdentifier = "\(otherUserEmail)_\(currentUserEmail)_\(dateString)"
+        let newIdentifier = "\(otherUserEmail)_\(safeCurrentEmail )_\(dateString)"
         
         print("Created message id: \(newIdentifier)")
         return newIdentifier
