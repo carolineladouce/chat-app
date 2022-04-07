@@ -138,7 +138,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                                   kind: .text(text))
             
             // Create conversation in database
-            DatabaseManager.shared.createNewConversation(with: otherUserEmail, firstMessage: message, completion: { success in
+            DatabaseManager.shared.createNewConversation(with: otherUserEmail, name: self.title ?? "UserGoogle Firebase,", firstMessage: message, completion: { success in
                 if success {
                     print("Message sent")
                 } else {
