@@ -127,7 +127,7 @@ class ConversationsViewController: UIViewController {
             return
         }
         
-        let vc = ChatViewController(with: email)
+        let vc = ChatViewController(with: email, id: nil)
         // Push the new ChatViewController onto the stack, ensuring it's state is isNewConversation
         vc.isNewConversation = true
         vc.title = name 
@@ -183,7 +183,8 @@ extension ConversationsViewController: UITableViewDelegate, UITableViewDataSourc
         tableView.deselectRow(at: indexPath, animated: true)
         let model = conversations[indexPath.row]
         
-        let vc = ChatViewController(with: model.otherUserEmail)
+        let vc = ChatViewController(with: model.otherUserEmail, id: model.id)
+
         vc.title = model.name
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
